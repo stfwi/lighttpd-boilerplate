@@ -1,3 +1,20 @@
 
-An example file for directory listing and
-mime type check.
+An example file for directory listing and mime type check.
+
+To get at lease 1kB ...
+
+Etiam imperdiet fringilla elit, porta ullamcorper tortor porttitor ac. In sagittis
+mauris eget risus accumsan consectetur. Etiam a augue nibh. Nulla non nulla porta,
+interdum enim sit amet, laoreet erat. Phasellus nec lectus magna. In hac habitasse
+platea dictumst. Fusce aliquam turpis id neque laoreet porta. Integer lectus eros,
+feugiat vitae elementum vulputate, euismod feugiat odio.
+Proin sodales quis purus non ultricies. Fusce vitae nisl tristique, dapibus nunc ac,
+viverra turpis. Aenean ac lectus vel purus pharetra luctus.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+himenaeos. Sed porta massa non semper lobortis. Donec malesuada justo ut nisl imperdiet,
+non mollis dui placerat. Vivamus auctor turpis tempor felis volutpat rhoncus. Fusce
+vitae nisl tristique, dapibus nunc ac, viverra turpis. Vivamus in volutpat nibh.
+Suspendisse potenti. Curabitur nec tempus ante. Duis sit amet consectetur est. Sed
+lorem enim, dapibus tristique eleifend in, semper eu turpis. Integer ullamcorper,
+velit sit amet commodo luctus, enim orci consequat nulla, a rhoncus dolor justo vitae
+diam.

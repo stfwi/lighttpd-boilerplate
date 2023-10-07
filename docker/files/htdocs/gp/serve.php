@@ -1,5 +1,12 @@
 <?
 
+/**
+ * Returns the MIME type for a file path, or
+ * "application/octet-stream" for invalid/unknown
+ * types.
+ * @param string $path
+ * @return string
+ */
 if(!function_exists('mime_content_type')) {
   $_SERVER["MIME_CONTENT_TYPES"] = array('ai'=>'application/postscript', 'bmp'=>'image/bmp', 'cab'=>'application/vnd.ms-cab-compressed', 'css'=>'text/css', 'doc'=>'application/msword', 'eps'=>'application/postscript', 'exe'=>'application/x-msdownload', 'flv'=>'video/x-flv', 'gif'=>'image/gif', 'htm'=>'text/html', 'html'=>'text/html', 'ico'=>'image/vnd.microsoft.icon', 'jpe'=>'image/jpeg', 'jpeg'=>'image/jpeg', 'jpg'=>'image/jpeg', 'js'=>'application/javascript', 'json'=>'application/json', 'mov'=>'video/quicktime', 'mp3'=>'audio/mpeg', 'msi'=>'application/x-msdownload', 'ods'=>'application/vnd.oasis.opendocument.spreadsheet', 'odt'=>'application/vnd.oasis.opendocument.text', 'pdf'=>'application/pdf', 'php'=>'text/html', 'png'=>'image/png', 'ppt'=>'application/vnd.ms-powerpoint', 'ps'=>'application/postscript', 'psd'=>'image/vnd.adobe.photoshop', 'qt'=>'video/quicktime', 'rar'=>'application/x-rar-compressed', 'rtf'=>'application/rtf', 'svg'=>'image/svg+xml', 'svgz'=>'image/svg+xml', 'swf'=>'application/x-shockwave-flash', 'tif'=>'image/tiff', 'tiff'=>'image/tiff', 'txt'=>'text/plain', 'xls'=>'application/vnd.ms-excel', 'xml'=>'application/xml', 'zip'=>'application/zip');
   function mime_content_type($path) {
@@ -9,6 +16,12 @@ if(!function_exists('mime_content_type')) {
   }
 }
 
+/**
+ * Returns a resolved path without that the file or
+ * directory has to exist (like realpath).
+ * @param string $path
+ * @return string
+ */
 function absolute_path($path) {
   $path = preg_replace("/[\?#].*$/", "", preg_replace("/^\/+/", "", str_replace('\\', '/', $path)));
   $abs = array();
@@ -20,15 +33,32 @@ function absolute_path($path) {
   return "/" . trim(implode("/", $abs));
 }
 
+/**
+ * JSON pretty serialization without unicode or slah escaping.
+ * @param mixed $o
+ * @return string
+ */
 function to_json($o) {
-  return json_encode($o, JSON_PRETTY_PRINT|JSON_UNESCAPED_LINE_TERMINATORS|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+  return json_encode($o, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
 }
 
+/**
+ * Returns the extension of a given path, or an empty
+ * string if no dot "." is contained in the path.
+ * @param mixed $path
+ * @return string
+ */
 function file_extension($path) {
-  $path = explode(".", basename($path));
+  $path = array_filter(explode(".", basename($path)), function($s){ return strlen($s)>0; });
   return (count($path)<2) ? "" : strtolower(array_pop($path));
 }
 
+/**
+ * Main serve function, returns contents and meta data
+ * for generating the HTML using conventional PHP tagged
+ * HTML below.
+ * @return array
+ */
 function serve() {
   $rpath = absolute_path(rawurldecode($_SERVER["REQUEST_URI"]));
   $path = $_SERVER["DOCUMENT_ROOT"] . "/" . trim($rpath, "/ ");

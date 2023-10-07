@@ -1,21 +1,46 @@
 <?
 
-function pretty_filesize($size, $precision=0) {
+/**
+ * Returns a human readable file size text
+ * (in KB, MB, etc) from a numeric file
+ * size in bytes.
+ * @param int $size
+ * @return string
+ */
+function pretty_filesize($size) {
   $sizes = array('YB', 'ZB', 'EB', 'PB', 'TB', 'GB', 'MB', 'KB', 'B');
   $total = count($sizes);
   while($total-- && ($size > 1024)) $size /= 1024;
-  return sprintf('%.'.$precision.'f', $size) . $sizes[$total];
+  return sprintf('%.1f', $size) . $sizes[$total];
 }
 
+/**
+ * Returns the filesystem path for a URL path
+ * (relative to document root).
+ * @param string $rpath
+ * @return string
+ */
 function local_path($rpath) {
   return "/" . trim($_SERVER["DOCUMENT_ROOT"] . "/" . trim($rpath, "/"), "/");
 }
 
+/**
+ * Converts a numeric unix timestamp into
+ * an ISO date string YYYY-MM-DD hh:mm:ss.
+ * @param int $ts
+ * @return string
+ */
 function iso_datetime($ts) {
   if(!is_numeric($ts)) return htmlspecialchars($ts);
   return date("Y-m-d H:i:s", $ts);
 }
 
+/**
+ * Collects and returns directory entry data
+ * as assoc array.
+ * @param string $path
+ * @return array
+ */
 function file_listing($path) {
   $files = array();
   $all = array();
@@ -55,6 +80,10 @@ function file_listing($path) {
   return $all;
 }
 
+/**
+ * Prints the given string HTML escaped.
+ * @param string $s
+ */
 function esc($s) {
   if(empty($s)) {
     print("&nbsp;");
@@ -63,6 +92,13 @@ function esc($s) {
   }
 }
 
+/**
+ * Main directory index composition.
+ * Prints to output buffer, returns
+ * meta data for the framing HTML in
+ * serve.php.
+ * @return array
+ */
 function serve_directory_index($path) {
   $path = ltrim($path, '/');
   if($_SERVER['PHP_SELF'] == ('/' . $path)) {
