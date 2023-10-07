@@ -1,0 +1,5 @@
+
+An example file for directory listing and
+mime type check.
+
+Shall not be visible in the listing.

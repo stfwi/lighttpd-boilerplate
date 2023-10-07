@@ -1,0 +1,35 @@
+@import url(../fonts/font-awsome.css);
+@import url(../fonts/font-titillium-web.css);
+@import url(navigation.css);
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: "Titillium Web";
+  font-size: 11pt;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+body {
+  margin: 10px 20px 10px 90px;
+  background-color: rgb(235, 235, 234);
+}
+
+body * {
+
+}
+
+a, a:active, a:visited {
+  text-decoration: none;
+  color: #000077;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+  color: #0000bb;
+}

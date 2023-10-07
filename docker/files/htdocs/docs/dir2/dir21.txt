@@ -1,0 +1,7 @@
+
+An example file for directory listing and
+mime type check.
+
+Shall be accessible, but not directly shown
+when clicked on from the directory listing.
+(as an index.html exists here).

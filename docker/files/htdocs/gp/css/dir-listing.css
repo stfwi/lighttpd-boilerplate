@@ -1,0 +1,16 @@
+@import url("common.css");
+
+h2 { margin: 5px 10px 5px 10px; text-decoration: underline;}
+table { margin: 0 0 0 20px; }
+table * { user-select: none; }
+tr { background: transparent; }
+tr:hover { background-color: #aaaaaa; }
+th, td { text-align: left; }
+th { font-weight: bold; padding-right: 14px; }
+td:nth-child(1) { min-width: 150px; }
+td:nth-child(2) { min-width: 100px; }
+td:nth-child(3) { min-width: 50px; }
+td {padding-right: 14px;}
+td.s, th.s {text-align: right;}
+div.list { padding-top: 10px; padding-bottom: 14px;}
+div.foot { display: none; }
