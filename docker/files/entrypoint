@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+sudo -u httpd /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
